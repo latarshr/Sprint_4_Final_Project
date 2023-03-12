@@ -1,4 +1,4 @@
-import config.AppConfig;
+import ru.yandex.praktikum.test.website.AppConfig;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageObject.MainPage;
+import ru.yandex.praktikum.test.order.page.MainPage;
 
 import java.util.concurrent.TimeUnit;
 

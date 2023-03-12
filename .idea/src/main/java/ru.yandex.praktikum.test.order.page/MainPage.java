@@ -1,4 +1,4 @@
-package pageObject;
+package ru.yandex.praktikum.test.order.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

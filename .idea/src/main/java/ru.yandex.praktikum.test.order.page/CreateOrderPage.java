@@ -1,4 +1,4 @@
-package pageObject;
+package ru.yandex.praktikum.test.order.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -58,27 +58,40 @@ public class CreateOrderPage {
     private By successAlert = By.className("Order_ModalHeader__3FDaJ");
 
 
-    public CreateOrderPage(WebDriver driver){
-        this.driver=driver;
+    public CreateOrderPage(WebDriver driver) {
+        this.driver = driver;
     }
 
     //методы на заполнение полей первой части формы заказа
-    public void setUserNameField (String userName){driver.findElement(userNameField).sendKeys(userName);}
-    public void setUserLastNameField (String userLastName){driver.findElement(userLastNameField).sendKeys(userLastName);}
-    public void setUserAddressField (String userAddress){driver.findElement(userAddressField).sendKeys(userAddress);}
-    public void setMetroStationField (String metroStation){
+    public void setUserNameField(String userName) {
+        driver.findElement(userNameField).sendKeys(userName);
+    }
+
+    public void setUserLastNameField(String userLastName) {
+        driver.findElement(userLastNameField).sendKeys(userLastName);
+    }
+
+    public void setUserAddressField(String userAddress) {
+        driver.findElement(userAddressField).sendKeys(userAddress);
+    }
+
+    public void setMetroStationField(String metroStation) {
         driver.findElement(metroStationField).sendKeys(metroStation);
         driver.findElements(metroStationList).get(0).click();
     }
-    public void setUserPhoneField(String userPhone){driver.findElement(userPhoneField).sendKeys(userPhone);}
-    public void clickNextPageBtn (){
+
+    public void setUserPhoneField(String userPhone) {
+        driver.findElement(userPhoneField).sendKeys(userPhone);
+    }
+
+    public void clickNextPageBtn() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", driver.findElement(nextPageBtn));
         driver.findElement(nextPageBtn).click();
     }
 
     //заполняем первую часть формы заказа
-    public void createFirstPartOrder (String userName, String userLastName,String userAddress,String metroStation,String phoneNumber){
+    public void createFirstPartOrder(String userName, String userLastName, String userAddress, String metroStation, String phoneNumber) {
         setUserNameField(userName);
         setUserLastNameField(userLastName);
         setUserAddressField(userAddress);
@@ -88,28 +101,34 @@ public class CreateOrderPage {
     }
 
     //методы на заполнение полей второй части формы заказа
-    public void setDateField (String date){
+    public void setDateField(String date) {
         driver.findElement(dateField).sendKeys(date);
         driver.findElement(dateField).sendKeys(Keys.ENTER);
     }
-    public void setRentalPeriodField (int indexRentDays){
+
+    public void setRentalPeriodField(int indexRentDays) {
         driver.findElement(rentalPeriodField).click();
         driver.findElements(rentalPeriodOptions).get(indexRentDays).click();
     }
-    public void setColourCheckBox(int indexColour){
+
+    public void setColourCheckBox(int indexColour) {
         driver.findElements(colourCheckBox).get(indexColour).click();
     }
-    public void setCommentField (String comment){
+
+    public void setCommentField(String comment) {
         driver.findElement(commentField).sendKeys(comment);
     }
-    public void clickOrderFinishBtn(){
+
+    public void clickOrderFinishBtn() {
         driver.findElement(orderFinishBtn).click();
     }
-    public void clickOrderConfirmBtn (){
+
+    public void clickOrderConfirmBtn() {
         driver.findElement(orderConfirmBtn).click();
     }
+
     //заполняем вторую часть формы заказа
-    public void createSecondPartOrder (String date,int rentDays,int indexColour,String comment){
+    public void createSecondPartOrder(String date, int rentDays, int indexColour, String comment) {
         setDateField(date);
         setRentalPeriodField(rentDays);
         setColourCheckBox(indexColour);
@@ -117,8 +136,9 @@ public class CreateOrderPage {
         clickOrderFinishBtn();
         clickOrderConfirmBtn();
     }
+
     //дожидаемся алерта об успехе
-    public String getSuccessAlert (){
+    public String getSuccessAlert() {
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOf(driver.findElement(successAlert))).isDisplayed();
         return driver.findElement(successAlert).getText();

@@ -1,4 +1,4 @@
-import config.AppConfig;
+import ru.yandex.praktikum.test.website.AppConfig;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
@@ -9,8 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import pageObject.CreateOrderPage;
-import pageObject.MainPage;
+import ru.yandex.praktikum.test.order.page.CreateOrderPage;
+import ru.yandex.praktikum.test.order.page.MainPage;
 
 import java.util.concurrent.TimeUnit;
 
